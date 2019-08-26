@@ -15,7 +15,7 @@
 	}
 	function del(nid) {
 		if (confirm("确定删除此条新闻?")) {
-			window.location.href = "NewsServlet?method=delete_news&id=" + nid;
+			window.location.href = "NewsServlet?method=del_news&id=" + nid;
 		}
 	}
 </script>
@@ -29,6 +29,7 @@
 	
 	<table>
 	<%
+		
 		Object obj = request.getAttribute("newsList");
 	
 		if (obj != null) {

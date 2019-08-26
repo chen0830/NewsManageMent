@@ -10,6 +10,7 @@ public class SimpleDBUtil {
 	static final String PASSWORD = "123456";
 	
 	public static Connection getConnection() {
+		System.out.println("打开数据库连接");
 		Connection conn = null;
 		try {	
 			Class.forName(DRIVER);
@@ -21,6 +22,7 @@ public class SimpleDBUtil {
 	}
 	
 	public static void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
+		System.out.println("关闭数据库连接");
 		try {
 			if (rs != null) rs.close();
 			if (pstmt != null) pstmt.close();

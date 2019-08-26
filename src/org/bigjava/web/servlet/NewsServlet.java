@@ -27,28 +27,26 @@ public class NewsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String method = req.getParameter("method");
-		
+		System.out.println("接收到method");
 		if(Constants.ADD_NEWS.equalsIgnoreCase(method)) {
+			System.out.println("收到method为add_news");
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			int fk_topic = Integer.valueOf(req.getParameter("topic"));
 			
-			System.out.println("提交1");
 			News aNews = new News(title, content, fk_topic);
-			System.out.println("提交2");
-			newsService.addNews(aNews);//提交新闻
-			
+			System.out.println("已提交添加");
+		
 			// 设置返回信息提醒
 			if (newsService.addNews(aNews)) {
 				MessageUtil.REQ_INFO_SETTING(req, Constants.MSG_REQ_KEY, Constants.MSG_REQ_ADD_NEWS_SUCCESS);
 				} else {
-					MessageUtil.REQ_INFO_SETTING(req, Constants.MSG_REQ_KEY, Constants.MSG_REQ_ADD_NEWS_FAILURE);
-					}
+				MessageUtil.REQ_INFO_SETTING(req, Constants.MSG_REQ_KEY, Constants.MSG_REQ_ADD_NEWS_FAILURE);
+				}
 			req.getRequestDispatcher("/admin/addNews.jsp").forward(req, resp);
-
-			
 		}else if(Constants.EDIT_NEWS.equalsIgnoreCase(method)) {
 			// 修改新闻
+			System.out.println("收到method为edit_news");
 			int nid = Integer.valueOf(req.getParameter("id"));
 			News editNews = newsService.getNewsById(nid);
 			req.setAttribute("editNews", editNews);
@@ -68,6 +66,7 @@ public class NewsServlet extends HttpServlet {
 			
 		}else if(Constants.DEL_NEWS.equalsIgnoreCase(method)) {
 			// 通过id删除新闻
+			System.out.println("收到method为del_news");
 			int nid = Integer.valueOf(req.getParameter("id"));
 			newsService.deleteNewsById(nid);
 			req.getRequestDispatcher("/admin/NewsServlet?method=show_all_news").forward(req, resp);

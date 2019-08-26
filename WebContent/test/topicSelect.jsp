@@ -10,7 +10,9 @@
 <body>
 
 	<%
+		System.out.print("连接数据库1");
 		Connection conn = SimpleDBUtil.getConnection();
+		System.out.print("连接数据库2");
 		PreparedStatement pstmt = conn.prepareStatement("select * from topic");
 		ResultSet rs = pstmt.executeQuery();
 		List topicList = new ArrayList();
