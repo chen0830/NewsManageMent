@@ -9,8 +9,9 @@ public interface NewsDAO {
 	/**
 	 *  添加新闻
 	 * @param aNews
+	 * @return 
 	 */
-	public void addNews(News aNews);
+	public boolean addNews(News aNews);
 
 	/**
 	 * 根据id获取新闻
@@ -24,5 +25,16 @@ public interface NewsDAO {
 	 * @return
 	 */
 	public java.util.List<News> findAllNews();
+	/**
+	 * 根据新闻主键删除新闻
+	 * @param id
+	 */
+	public void deleteNewsById(int id);
+	
+	/**
+	 * 修改新闻
+	 * @param aNews
+	 */
+	public void updateNewsById(News aNews);
 	
 }

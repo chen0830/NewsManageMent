@@ -11,21 +11,34 @@ public class NewsServiceImpl implements NewsService {
 
 	NewsDAO nd = new NewsDAOImpl();
 	@Override
-	public void addNews(News aNews) {
+	public boolean addNews(News aNews) {
 		// TODO Auto-generated method stub
 		nd.addNews(aNews);
+		return nd.addNews(aNews);
 	}
 
 	@Override
 	public News getNewsById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return nd.getNewsById(id);
 	}
 
 	@Override
 	public List<News> findAllNews() {
 		// TODO Auto-generated method stub
 		return nd.findAllNews();
+	}
+
+	@Override
+	public void deleteNewsById(int id) {
+		// TODO Auto-generated method stub
+		nd.deleteNewsById(id);
+	}
+
+	@Override
+	public void updateNewsById(News aNews) {
+		// TODO Auto-generated method stub
+		nd.updateNewsById(aNews);
 	}
 
 }

@@ -21,13 +21,12 @@ public class News {
 	public News() {
 		
 	}
-	public News(String title, String content, int fk_topic_id) {
+	public News(String title, String content, int fk_topic) {
 		super();
 		this.title = title;
 		this.content = content;
-		this.fk_topic_id = fk_topic_id;
+		this.fk_topic_id = fk_topic;
 	}
-
 	public News(String title, String content, Date createTime, int fk_topic_id) {
 		super();
 		this.title = title;
@@ -35,7 +34,18 @@ public class News {
 		this.createTime = createTime;
 		this.fk_topic_id = fk_topic_id;
 	}
-
+	public News(int id, String title, String content, Date createTime, int fk_topic_id, Date modifyTime,
+			String author) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.createTime = createTime;
+		this.fk_topic_id = fk_topic_id;
+		this.modifyTime = modifyTime;
+		this.author = author;
+	}
+	
 	public int getId() {
 		return id;
 	}

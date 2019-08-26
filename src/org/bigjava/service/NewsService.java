@@ -6,8 +6,9 @@ public interface NewsService {
 	/**
 	 *  添加新闻
 	 * @param aNews
+	 * @return 
 	 */
-	public void addNews(News aNews);
+	public boolean addNews(News aNews);
 
 	/**
 	 * 根据id获取新闻
@@ -21,4 +22,15 @@ public interface NewsService {
 	 * @return
 	 */
 	public java.util.List<News> findAllNews();
+	/**
+	 * 根据id删除新闻
+	 * @param id
+	 */
+	public void deleteNewsById(int id);
+	
+	/**
+	 * 修改新闻
+	 * @param aNews
+	 */
+	public void updateNewsById(News aNews);
 }
