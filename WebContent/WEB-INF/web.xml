@@ -9,29 +9,26 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-        <servlet-name>NewsServlet</servlet-name>
-        <servlet-class>org.bigjava.web.servlet.NewsServlet</servlet-class>
-        <init-param>
-            <param-name>initParam</param-name>
-            <param-value>欢迎小菜包</param-value>
-        </init-param> 
-  </servlet>
-  <servlet-mapping>
-        <servlet-name>NewsServlet</servlet-name>
-        <url-pattern>/NewsServlet</url-pattern>
-  </servlet-mapping>
-  <context-param>
-        <param-name>contextParam</param-name>
-        <param-value>This is System’s parameter</param-value>
-  </context-param>
+  <!--字符编码过滤器CharacterEncodingFilter-->
   <filter>
-    <display-name>CharacterEncodingFilter</display-name>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.bigjava.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+    	<param-name>globalEncoding</param-name>
+    	<param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>CharacterEncodingFilter</filter-name>
-    <url-pattern>/CharacterEncodingFilter</url-pattern>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- 详细新闻Servlet -->
+  <servlet>
+  	<servlet-name>NewsServlet</servlet-name>
+  	<servlet-class>org.bigjava.web.servlet.NewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   	<servlet-name>NewsServlet</servlet-name>
+   	<url-pattern>/NewsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CharacterEncodingFilter implements Filter {
 
+	String globalEncoding = null;
     /**
      * Default constructor. 
      */
@@ -39,9 +40,12 @@ public class CharacterEncodingFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		System.out.println("处理编码");
-		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
+		
+		if(this.globalEncoding != null) {
+			req.setCharacterEncoding("globalEncoding");
+			resp.setCharacterEncoding("globalEncoding");
+		}
+		//System.out.println("处理编码");
 		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
@@ -52,7 +56,9 @@ public class CharacterEncodingFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("初始化");
+		//System.out.println("初始化");
+		globalEncoding = fConfig.getInitParameter("globalEncoding");
+		
 	}
 
 }
