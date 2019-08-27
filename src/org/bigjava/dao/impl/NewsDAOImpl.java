@@ -51,6 +51,7 @@ public class NewsDAOImpl implements NewsDAO {
 			conn = SimpleDBUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
 				aNews = new News();

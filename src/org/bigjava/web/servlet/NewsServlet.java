@@ -50,16 +50,17 @@ public class NewsServlet extends HttpServlet {
 			int nid = Integer.valueOf(req.getParameter("id"));
 			News editNews = newsService.getNewsById(nid);
 			req.setAttribute("editNews", editNews);
+			System.out.println("开始跳转到editNews.jsp");
 			req.getRequestDispatcher("/admin/editNews.jsp").forward(req, resp);
-		
+			System.out.println("成功跳转到editNews.jsp");
 		}else if (Constants.EDIT_NEWS_SBT.equals(method)) {
 			// 修改新闻提交
+			System.out.println("收到method为edit_news_submit");
 			int nid = Integer.valueOf(req.getParameter("id"));
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			int fk_topic = Integer.valueOf(req.getParameter("topic"));
-			News aNews = new News(title, content, fk_topic);
-			aNews.setId(nid);
+			News aNews = new News(nid, title, content, fk_topic);
 			
 			newsService.updateNewsById(aNews);
 			req.getRequestDispatcher("/admin/NewsServlet?method=show_all_news").forward(req, resp);
@@ -71,8 +72,8 @@ public class NewsServlet extends HttpServlet {
 			newsService.deleteNewsById(nid);
 			req.getRequestDispatcher("/admin/NewsServlet?method=show_all_news").forward(req, resp);
 		}else if (Constants.SHOW_NEWS.equalsIgnoreCase(method)) {
-			
 			// 查询所有新闻
+			System.out.println("收到method为show_all_news");
 			List<News> newsList = newsService.findAllNews();
 			req.setAttribute("newsList", newsList);
 			req.getRequestDispatcher("/admin/newsList.jsp").forward(req, resp);
